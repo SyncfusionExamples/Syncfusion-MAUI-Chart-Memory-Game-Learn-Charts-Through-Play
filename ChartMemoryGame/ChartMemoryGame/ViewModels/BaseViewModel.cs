@@ -22,7 +22,7 @@ namespace ChartMemoryGame
         private readonly Random rand = new();
         private int round = 1;
         private int segments = 5;
-        private const int maxRounds = 1;
+        private const int maxRounds = 2;
         private const int attemptsPerRound = 3;
         private int attemptsDoneThisRound = 0;
         private int score = 0;
