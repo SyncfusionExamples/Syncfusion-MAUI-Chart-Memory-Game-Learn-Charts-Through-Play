@@ -344,14 +344,22 @@ namespace ChartMemoryGame
                     CornerRadius = 8,
                     PopupBackground = Colors.Transparent
                 },
+
                 ContentTemplate = new DataTemplate(() =>
                 {
                     var popupContent = new Label
                     {
-                        Text = SequenceText,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
-                        TextColor = Color.FromArgb("#022c1d")
+                        TextColor = Color.FromArgb("#022c1d"),
+                        FormattedText = new FormattedString
+                        {
+                            Spans =
+                            {
+                                new Span  {Text = "Sequence: ", FontSize=16, FontAttributes = FontAttributes.Bold},
+                                new Span  { Text = string.Join(", ", sequence), FontSize= 14}
+                            }
+                        },
                     };
 
                     var border = new Border
