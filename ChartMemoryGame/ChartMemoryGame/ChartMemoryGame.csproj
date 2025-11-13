@@ -63,8 +63,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.10" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 		<PackageReference Include="Plugin.Maui.Audio" Version="4.0.0" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="31.2.10" />
-		<PackageReference Include="Syncfusion.Maui.Popup" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="*" />
+		<PackageReference Include="Syncfusion.Maui.Popup" Version="*" />
 	</ItemGroup>
 
 	<ItemGroup>
