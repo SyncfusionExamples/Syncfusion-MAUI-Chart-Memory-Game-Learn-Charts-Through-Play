@@ -23,7 +23,7 @@ namespace ChartMemoryGame
         private int round = 1;
         private int segments = 5;
         private const int maxRounds = 3;
-        private const int attemptsPerRound = 3;
+        private const int attemptsPerRound = 1;
         private int attemptsDoneThisRound = 0;
         private int score = 0;
         private Func<int, Task>? sequenceHighlighter { get; set; }
