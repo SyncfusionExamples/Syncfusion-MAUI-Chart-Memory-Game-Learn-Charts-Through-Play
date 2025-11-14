@@ -42,7 +42,8 @@ The Chart Memory Game is a sequence-based memory challenge designed to make lear
 - Responsive Layout: Works across desktop and mobile screens.
 - Scoring System: Tracks performance for added challenge.
 
-![Presentation1](https://github.com/user-attachments/assets/549bf1b9-6481-453a-9fe8-88521f11499d)
+![gif](https://github.com/user-attachments/assets/e5170855-9285-4814-a54e-6b4aebc358c2)
+
 
 ## Troubleshooting
 #### Path Too Long Exception
