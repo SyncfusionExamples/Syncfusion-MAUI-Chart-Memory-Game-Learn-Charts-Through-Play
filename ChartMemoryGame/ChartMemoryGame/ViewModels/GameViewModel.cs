@@ -74,7 +74,6 @@ namespace ChartMemoryGame
             }
 
             segments = Round * 5;
-            attemptsDoneThisRound = 0;
             userInput.Clear();
             IsAnimating = false;
             IsAcceptingInput = false;
@@ -85,8 +84,6 @@ namespace ChartMemoryGame
 
             GenerateSequenceForRound();
             DisplaySequenceInLabel();
-            AttemptStatus = $"{attemptsPerRound} more to complete";
-            UpdateAttemptsDots();
             StartEnabled = true;
             TimerProgress = 0;
             IsPaused = true;
@@ -153,40 +150,20 @@ namespace ChartMemoryGame
 
             if (userInput.Count == sequence.Count)
             {
-                attemptsDoneThisRound++;
-                UpdateAttemptsDots();
-                if (attemptsDoneThisRound < attemptsPerRound)
+                IsAcceptingInput = false;
+                PlayHappy();
+                await ShowAlertAsync("Round Complete", $"You have successfully completed round {Round}.");
+
+                if (Round >= maxRounds)
                 {
-                    int remaining = attemptsPerRound - attemptsDoneThisRound;
-                    AttemptStatus = remaining == 1 ? "1 more to complete" : $"{remaining} more to complete";
-
-                    userInput.Clear();
-                    IsAcceptingInput = false;
-                    await Task.Delay(500);
-                    // Replay using the stored sequence highlighter (orange), not the green tap flash
-                    if (sequenceHighlighter != null)
-                        await StartRoundAsync(sequenceHighlighter);
-                    else
-                        await StartRoundAsync(flash);
+                    WinVisible = true;
+                    StartEnabled = false;
+                    SequenceText = "Sequence: -";
+                    return;
                 }
-                else
-                {
-                    IsAcceptingInput = false;
-                    AttemptStatus = string.Empty;
-                    PlayHappy();
-                    await ShowAlertAsync("Round Complete", $"You have successfully completed round {Round}.");
 
-                    if (Round >= maxRounds)
-                    {
-                        WinVisible = true;
-                        StartEnabled = false;
-                        SequenceText = "Sequence: -";
-                        return;
-                    }
-
-                    Round++;
-                    InitializeRound(false);
-                }
+                Round++;
+                InitializeRound(false);
             }
         }
 
@@ -295,18 +272,6 @@ namespace ChartMemoryGame
             ActiveAction = IsPaused ? "Resume" : "Pause";
             StartButtonStroke = Colors.Transparent;
             ResumeButtonStroke = button;
-        }
-
-        private void UpdateAttemptsDots()
-        {
-            int remaining = Math.Max(0, attemptsPerRound - attemptsDoneThisRound);
-            AttemptsDots = remaining switch
-            {
-                3 => "●●●",
-                2 => "●●○",
-                1 => "●○○",
-                _ => "○○○"
-            };
         }
 
         private async Task ShowAlertAsync(string title, string message)

@@ -65,7 +65,6 @@ FontAttributes="Bold" FontSize="22"/>
 
             <VerticalStackLayout Spacing="10">
                 <Label Text="{Binding Round, StringFormat='Round: {0}'}" FontAttributes="Bold" FontSize="22" TextColor="#f1f5fb"/>
-                <Label Text="{Binding AttemptStatus}" FontSize="18" TextColor="#e3eaf6"/>
                 <Label Text="{Binding SequenceText}" x:Name="sequence" FontSize="18" TextColor="#e3eaf6"
                         IsVisible="{Binding ShowSequenceText}"/>
 
@@ -106,8 +105,7 @@ FontAttributes="Bold" FontSize="22"/>
                     </Border>
 
                 </Grid>
-
-                <Label Text="{Binding AttemptsDots}" TextColor="#f1f5fb"/>
+               
             </VerticalStackLayout>
         </Border>
 

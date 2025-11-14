@@ -23,8 +23,6 @@ namespace ChartMemoryGame
         private int round = 1;
         private int segments = 5;
         private const int maxRounds = 3;
-        private const int attemptsPerRound = 1;
-        private int attemptsDoneThisRound = 0;
         private int score = 0;
         private Func<int, Task>? sequenceHighlighter { get; set; }
 
@@ -40,12 +38,10 @@ namespace ChartMemoryGame
 
         Color button = Color.FromArgb("#66FFFFFF");
         private string sequenceText = "Sequence: -";
-        private string attemptsDots = string.Empty;
         private bool winVisible;
         private double timerProgress;
         private bool showSequenceText = true;
         private bool startEnabled = true;
-        private string attemptStatus = string.Empty;
         private Brush startButtonStroke = Colors.Transparent;
         private Brush resumeButtonStroke = Colors.Transparent;
         private string activeAction = "Start";
@@ -127,18 +123,6 @@ namespace ChartMemoryGame
         {
             get => sequenceText;
             private set { sequenceText = value; OnPropertyChanged(); }
-        }
-
-        public string AttemptStatus
-        {
-            get => attemptStatus;
-            private set { attemptStatus = value; OnPropertyChanged(); }
-        }
-
-        public string AttemptsDots
-        {
-            get => attemptsDots;
-            private set { attemptsDots = value; OnPropertyChanged(); }
         }
 
         public bool WinVisible
